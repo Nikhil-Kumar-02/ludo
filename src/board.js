@@ -4,10 +4,25 @@ import greenbead from './img/green.png'
 import bluebead from './img/blue.png'
 import redbead from './img/red.png'
 import yellowbead from './img/yellow.png'
+import Player from './player'
 
 const board = (props) => {
   return (
     <div className="boardContainer">
+
+    <div className="playergreen player">
+        <Player name="Player Green"></Player>
+    </div>
+    <div className="playerred player">
+        <Player name="Player Red"></Player>
+    </div>
+    <div className="playerblue player">
+        <Player name="Player Blue"></Player>
+    </div>
+    <div className="playeryellow player">
+        <Player name="Player Yellow"></Player>
+    </div>
+    
         <div className="game">
             <div className="house green">
                 <div className="box">
