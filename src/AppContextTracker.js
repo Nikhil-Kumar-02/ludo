@@ -5,10 +5,13 @@ export const AppContext = createContext();
 function AppContextTracker({children}) {
 
     const [currPlayer , setCurrPlayer] = useState(0);
+    const [currDicePos , setCurrDicePos] = useState(null);
 
     const value = {
         currPlayer ,
-        setCurrPlayer
+        setCurrPlayer , 
+        currDicePos , 
+        setCurrDicePos
     }
 
   return (

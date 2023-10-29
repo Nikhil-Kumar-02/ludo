@@ -1,10 +1,38 @@
-import React from "react"
+import React, { useContext } from "react"
+import { AppContext } from "./AppContextTracker"
 import './player.css'
 import profile from './img/profile.jpg'
+import one from './img/one.jpeg'
+import two from './img/two.jpeg'
 import three from './img/three.jpeg'
+import four from './img/four.jpeg'
+import five from './img/five.jpeg'
+import six from './img/six.jpeg'
 
 const Player = (props) => {
-  const CurrentPlayer = props.CurrentPlayer;
+  
+  const {currPlayer , setCurrPlayer , currDicePos , setCurrDicePos} = useContext(AppContext);
+  
+  console.log(currDicePos);
+  const diceImg = [`${one}` , `${two}` , `${three}` , `${four}` , `${five}` , `${six}`];
+
+  function togglePlayer() {
+    setCurrPlayer((prev) => {
+        return (
+            prev = (prev+1)%4
+        );
+    })
+
+  }
+
+  function toggleDice(){
+    const number = Math.floor(Math.random()*6);
+    setCurrDicePos(diceImg[number]);
+  }
+
+  const allPlayers = ["Player Red" , "Player Blue" , "Player Yellow" , "Player Green"];
+  const CurrentPlayer = allPlayers[currPlayer];
+
   return (
     <div className="playerContainer">
         <div className="playernameAndprofile">
@@ -13,7 +41,7 @@ const Player = (props) => {
         </div>
       <div className="dice">{
           CurrentPlayer===props.name && 
-          <img src={three} height={90} alt="dice"></img>
+          <img src={currDicePos===null?two:currDicePos} height={90} alt="dice" onClick={toggleDice}></img>
         }</div>
     </div>
   )
