@@ -1,43 +1,47 @@
 import React from "react"
 import './board.css'
+import greenbead from './img/green.png'
+import bluebead from './img/blue.png'
+import redbead from './img/red.png'
+import yellowbead from './img/yellow.png'
 
 const board = (props) => {
   return (
-    <div>
+    <div className="boardContainer">
         <div className="game">
             <div className="house green">
                 <div className="box">
-                    <div className="square square-one green"></div>
-                    <div className="square square-two green"></div>
-                    <div className="square square-three green"></div>
-                    <div className="square square-four green"></div>
+                    <div className="square square-one green"><img src={greenbead} height={33}></img></div>
+                    <div className="square square-two green"><img src={greenbead} height={33}></img></div>
+                    <div className="square square-three green"><img src={greenbead} height={33}></img></div>
+                    <div className="square square-four green"><img src={greenbead} height={33}></img></div>
                 </div>
             </div>
 
             <div className="house yellow">
                 <div className="box">
-                    <div className="square square-one yellow"></div>
-                    <div className="square square-two yellow"></div>
-                    <div className="square square-three yellow"></div>
-                    <div className="square square-four yellow"></div>
+                    <div className="square square-one yellow"><img src={yellowbead} height={33}></img></div>
+                    <div className="square square-two yellow"><img src={yellowbead} height={33}></img></div>
+                    <div className="square square-three yellow"><img src={yellowbead} height={33}></img></div>
+                    <div className="square square-four yellow"><img src={yellowbead} height={33}></img></div>
                 </div>
             </div>
 
             <div className="house red">
                 <div className="box">
-                    <div className="square square-one red"></div>
-                    <div className="square square-two red"></div>
-                    <div className="square square-three red"></div>
-                    <div className="square square-four red"></div>
+                    <div className="square square-one red"><img src={redbead} height={33}></img></div>
+                    <div className="square square-two red"><img src={redbead} height={33}></img></div>
+                    <div className="square square-three red"><img src={redbead} height={33}></img></div>
+                    <div className="square square-four red"><img src={redbead} height={33}></img></div>
                 </div>
             </div>
 
             <div className="house blue">
                 <div className="box">
-                    <div className="square square-one blue"></div>
-                    <div className="square square-two blue"></div>
-                    <div className="square square-three blue"></div>
-                    <div className="square square-four blue"></div>
+                    <div className="square square-one blue"><img src={bluebead} height={33}></img></div>
+                    <div className="square square-two blue"><img src={bluebead} height={33}></img></div>
+                    <div className="square square-three blue"><img src={bluebead} height={33}></img></div>
+                    <div className="square square-four blue"><img src={bluebead} height={33}></img></div>
                 </div>
             </div>
 
