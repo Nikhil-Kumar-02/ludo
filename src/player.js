@@ -13,7 +13,6 @@ const Player = (props) => {
   
   const {currPlayer , setCurrPlayer , currDicePos , setCurrDicePos} = useContext(AppContext);
   
-  console.log(currDicePos);
   const diceImg = [`${one}` , `${two}` , `${three}` , `${four}` , `${five}` , `${six}`];
 
   function togglePlayer() {
@@ -22,12 +21,14 @@ const Player = (props) => {
             prev = (prev+1)%4
         );
     })
-
   }
 
   function toggleDice(){
     const number = Math.floor(Math.random()*6);
-    setCurrDicePos(diceImg[number]);
+    setCurrDicePos(number);
+    if(number != 5){
+      togglePlayer();
+    }
   }
 
   const allPlayers = ["Player Red" , "Player Blue" , "Player Yellow" , "Player Green"];
@@ -41,7 +42,7 @@ const Player = (props) => {
         </div>
       <div className="dice">{
           CurrentPlayer===props.name && 
-          <img src={currDicePos===null?two:currDicePos} height={90} alt="dice" onClick={toggleDice}></img>
+          <img src={currDicePos===null?two:diceImg[currDicePos]} height={90} alt="dice" onClick={toggleDice}></img>
         }</div>
     </div>
   )

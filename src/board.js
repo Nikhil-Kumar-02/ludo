@@ -1,63 +1,126 @@
-import React from "react"
+import React, { useContext } from "react"
 import './board.css'
-import greenbead from './img/green.png'
-import bluebead from './img/blue.png'
-import redbead from './img/red.png'
-import yellowbead from './img/yellow.png'
 import Player from './player'
+import { AppContext } from "./AppContextTracker"
 
 
 const Board = (props) => {
+
+    const {bead , setBead , currPlayer , currDicePos , beadColor} = useContext(AppContext);
+    const player = ['red' , 'blue' , 'yellow' , 'green' ]
+
+    let currBead = document.querySelectorAll(`.${player[currPlayer]} .square`);
+
+    if(currBead !== null){
+        console.log("dice number is " , currDicePos);
+        for(let i=0;i<4;i++){
+            if(currDicePos === 5 && bead[currPlayer*4 + i] === -1){
+                currBead[i].classList.add('addAnimation');
+            }
+            else if(bead[currPlayer*4 + i] !== -1){
+                currBead[i].classList.add('addAnimation');
+            }
+        }
+    }
+
   return (
     <div className="boardContainer">    
 
     <div className="playergreen player">
-        <Player name="Player Green"></Player>
+        <Player name="Player Green" currBead={currBead}></Player>
     </div>
     <div className="playerred player">
-        <Player name="Player Red"></Player>
+        <Player name="Player Red" currBead={currBead}></Player>
     </div>
     <div className="playerblue player">
-        <Player name="Player Blue"></Player>
+        <Player name="Player Blue" currBead={currBead}></Player>
     </div>
     <div className="playeryellow player">
-        <Player name="Player Yellow"></Player>
+        <Player name="Player Yellow" currBead={currBead}></Player>
     </div>
     
         <div className="game">
             <div className="house green">
                 <div className="box">
-                    <div className="square square-one green"><img alt="" src={greenbead} height={33}></img></div>
-                    <div className="square square-two green"><img alt="" src={greenbead} height={33}></img></div>
-                    <div className="square square-three green"><img alt="" src={greenbead} height={33}></img></div>
-                    <div className="square square-four green"><img alt="" src={greenbead} height={33}></img></div>
+                    <div className="square square-one green">{
+                        bead[12] === -1 && <img alt="" src={beadColor[12]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-two green">{
+                        bead[13] === -1 && <img alt="" src={beadColor[13]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-three green">{
+                        bead[14] === -1 && <img alt="" src={beadColor[14]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-four green">{
+                        bead[15] === -1 && <img alt="" src={beadColor[15]} height={33}></img>
+                    }
+                    </div>
                 </div>
             </div>
 
             <div className="house yellow">
                 <div className="box">
-                    <div className="square square-one yellow"><img alt="" src={yellowbead} height={33}></img></div>
-                    <div className="square square-two yellow"><img alt="" src={yellowbead} height={33}></img></div>
-                    <div className="square square-three yellow"><img alt="" src={yellowbead} height={33}></img></div>
-                    <div className="square square-four yellow"><img alt="" src={yellowbead} height={33}></img></div>
+                    <div className="square square-one yellow">{
+                            bead[8] === -1 && <img alt="" src={beadColor[8]} height={33}></img>
+                            }
+                    </div>
+                    <div className="square square-two yellow">{
+                            bead[9] === -1 && <img alt="" src={beadColor[9]} height={33}></img>
+                            }
+                    </div>
+                    <div className="square square-three yellow">{
+                            bead[10] === -1 && <img alt="" src={beadColor[10]} height={33}></img>
+                            }
+                    </div>
+                    <div className="square square-four yellow">{
+                            bead[11] === -1 && <img alt="" src={beadColor[11]} height={33}></img>
+                            }
+                    </div>
                 </div>
             </div>
 
             <div className="house red">
                 <div className="box">
-                    <div className="square square-one red"><img alt="" src={redbead} height={33}></img></div>
-                    <div className="square square-two red"><img alt="" src={redbead} height={33}></img></div>
-                    <div className="square square-three red"><img alt="" src={redbead} height={33}></img></div>
-                    <div className="square square-four red"><img alt="" src={redbead} height={33}></img></div>
+                    <div className="square square-one red">{
+                        bead[0] === -1 && <img alt="" src={beadColor[0]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-two red">{
+                        bead[1] === -1 && <img alt="" src={beadColor[1]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-three red">{
+                        bead[2] === -1 && <img alt="" src={beadColor[2]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-four red">{
+                        bead[3] === -1 && <img alt="" src={beadColor[3]} height={33}></img>
+                    }
+                    </div>
                 </div>
             </div>
 
             <div className="house blue">
                 <div className="box">
-                    <div className="square square-one blue"><img alt="" src={bluebead} height={33}></img></div>
-                    <div className="square square-two blue"><img alt="" src={bluebead} height={33}></img></div>
-                    <div className="square square-three blue"><img alt="" src={bluebead} height={33}></img></div>
-                    <div className="square square-four blue"><img alt="" src={bluebead} height={33}></img></div>
+                    <div className="square square-one blue">{
+                        bead[4] === -1 && <img alt="" src={beadColor[4]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-two blue">{
+                        bead[5] === -1 && <img alt="" src={beadColor[5]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-three blue">{
+                        bead[6] === -1 && <img alt="" src={beadColor[6]} height={33}></img>
+                    }
+                    </div>
+                    <div className="square square-four blue">{
+                        bead[7] === -1 && <img alt="" src={beadColor[7]} height={33}></img>
+                    }
+                    </div>
                 </div>
             </div>
 
@@ -146,7 +209,6 @@ const Board = (props) => {
             <div className="cells cellnumber70 green"></div>
             <div className="cells cellnumber71 green"></div>
             <div className="cells cellnumber72"></div>
-
         </div>
     </div>
   )
