@@ -13,13 +13,14 @@
 .playergreen{
     position: absolute;
     left: 2rem;
+    top: 1rem;
     background: rgb(33,99,16);
     background: linear-gradient(90deg, rgba(33,99,16,1) 0%, rgba(66,172,32,1) 27%, rgba(49,214,126,1) 46%, rgba(42,207,139,0.874562324929972) 68%, rgba(0,255,213,1) 100%);
 }
 
 .playerred{
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     left: 2rem;
     background: rgb(255,12,0);
     background: linear-gradient(90deg, rgba(255,12,0,1) 0%, rgba(240,6,6,1) 51%, rgba(242,69,69,0.9585959383753502) 100%);
@@ -27,7 +28,7 @@
 
 .playerblue{
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     right: 2rem;
     background: rgb(17,67,135);
     background: linear-gradient(90deg, rgba(17,67,135,1) 0%, rgba(48,81,226,1) 50%, rgba(96,69,252,1) 100%);
@@ -35,7 +36,7 @@
 
 .playeryellow{
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     right: 2rem;
     background: rgb(199,186,31);
     background: linear-gradient(90deg, rgba(199,186,31,1) 0%, rgba(232,242,47,1) 50%, rgba(236,252,69,1) 100%);
@@ -44,7 +45,7 @@
 .game {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px auto;
+    margin: 30px auto;
     position: relative;
     width: 500px;
     height: 500px;

@@ -5,7 +5,7 @@ import background from './img/background3.png'
 function App() {
   return (
     <div className="App">
-      <img src={background} className='background'></img>
+      <img src={background} className='background' alt='bodybackground'></img>
       <Board></Board>
     </div>
   );
