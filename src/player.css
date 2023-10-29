@@ -2,6 +2,10 @@
     font-family: cursive;
 }
 
+.playerContainer{
+    display: flex;
+}
+
 .player{
     width: 18rem;
     border-radius: 2rem;
@@ -15,4 +19,14 @@
 .playerProfile > img{
     border-radius: 4rem;
     margin: 0.4rem;
+}
+
+.dice{
+    margin: auto;
+    & img{
+        border-radius: 1.5rem;
+    }
+    & :hover{
+        cursor: pointer;
+    }
 }
