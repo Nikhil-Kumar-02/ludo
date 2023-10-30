@@ -11,11 +11,13 @@ import six from './img/six.jpeg'
 
 const Player = (props) => {
   
-  const {currPlayer , setCurrPlayer , currDicePos , setCurrDicePos} = useContext(AppContext);
+  const {currPlayer , setCurrPlayer , currDicePos , setCurrDicePos , setBeadClicked , beadClicked , setDiceRolled , diceRolled} = useContext(AppContext);
   
   const diceImg = [`${one}` , `${two}` , `${three}` , `${four}` , `${five}` , `${six}`];
 
   function togglePlayer() {
+    setDiceRolled(false);
+    setBeadClicked(false);
     setCurrPlayer((prev) => {
         return (
             prev = (prev+1)%4
@@ -29,6 +31,10 @@ const Player = (props) => {
     if(number != 5){
       togglePlayer();
     }
+    else if(beadClicked){
+      togglePlayer();
+    }
+    setDiceRolled(true);
   }
 
   const allPlayers = ["Player Red" , "Player Blue" , "Player Yellow" , "Player Green"];

@@ -22,12 +22,13 @@ function AppContextTracker({children}) {
 
     const [currPlayer , setCurrPlayer] = useState(0);
     const [currDicePos , setCurrDicePos] = useState(null);
-
+    const [beadClicked , setBeadClicked] = useState(false);
+    const [diceRolled , setDiceRolled] = useState(false);
     const [bead , setBead] = useState([-1,-1,-1,-1 , -1,-1,-1,-1 , -1,-1,-1,-1 , -1,-1,-1,-1]);
     const [beadColor , setBeadColor] = useState([`${redbead1}`,`${redbead2}`,`${redbead3}`,`${redbead4}`,
                                               `${bluebead1}`,`${bluebead2}`,`${bluebead3}`,`${bluebead4}`,
                                               `${yellowbead1}`,`${yellowbead2}`,`${yellowbead3}`,`${yellowbead4}`,
-                                              `${greenbead1}`,`${greenbead2}`,`${greenbead3}`,`${greenbead4}`])
+                                              `${greenbead1}`,`${greenbead2}`,`${greenbead3}`,`${greenbead4}`]);
 
     const value = {
         currPlayer,
@@ -36,7 +37,11 @@ function AppContextTracker({children}) {
         setCurrDicePos,
         bead,
         setBead,
-        beadColor
+        beadColor,
+        beadClicked,
+        setBeadClicked,
+        diceRolled,
+        setDiceRolled
     }
 
   return (

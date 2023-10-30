@@ -6,21 +6,97 @@ import { AppContext } from "./AppContextTracker"
 
 const Board = (props) => {
 
-    const {bead , setBead , currPlayer , currDicePos , beadColor} = useContext(AppContext);
-    const player = ['red' , 'blue' , 'yellow' , 'green' ]
+    const {bead , setBead , currPlayer , currDicePos , beadColor , beadClicked , setBeadClicked , setDiceRolled , diceRolled} = useContext(AppContext);
+
+    const player = ['red' , 'blue' , 'yellow' , 'green' ];
+
+    function placeBead(){
+        //go to every beadnumber in bead array if not -1 then it will be somewhere in the board
+        //so place the bead at that position on the board by targetting it with the classname 
+        //and then placing that index bead with that index photo in the beadColor
+
+        for(let i=0;i<16;i++){
+            //if value is not -1 then it is on the board
+            console.log(bead[i]);
+            if(bead[i] !== -1){
+                //create the classname and target it
+                const createdClass = "cellnumber" + bead[i];
+                console.log(createdClass);  
+                const targetElement = document.querySelector(`.${createdClass}`);
+                console.log(targetElement);
+                
+
+                // Create an image element
+                const imageElement = document.createElement("img");
+
+                // Set the source (src) attribute of the image element to the URL of your image
+                imageElement.src = beadColor[i]; 
+
+                // You can also set other attributes of the image element if needed, like alt text, width, height, etc.
+                imageElement.alt = "";
+                imageElement.height = 33; // Set the height as needed
+
+                // Append the image element to the target element
+                if(targetElement !== null){
+                    console.log(targetElement.childNodes);
+                    if(targetElement.childNodes.length !== 0){
+                        continue;
+                    }
+                    targetElement.appendChild(imageElement);
+                }
+                console.log(imageElement);
+
+            }
+        }
+    }
+    placeBead();
+
+
 
     let currBead = document.querySelectorAll(`.${player[currPlayer]} .square`);
 
-    if(currBead !== null){
+    if(diceRolled && currBead !== null){
         console.log("dice number is " , currDicePos);
         for(let i=0;i<4;i++){
             if(currDicePos === 5 && bead[currPlayer*4 + i] === -1){
                 currBead[i].classList.add('addAnimation');
-            }
-            else if(bead[currPlayer*4 + i] !== -1){
-                currBead[i].classList.add('addAnimation');
+                currBead[i].addEventListener( 'click' , eventlistenerhandler);
             }
         }
+    }
+    
+    function eventlistenerhandler(e){
+        console.log(e.target);
+        console.log(e.target.parentElement);
+        console.log(e.target.parentElement.classList);
+        const target = e.target.parentElement.classList[1].split('-')[1];
+        let offset = 0;
+        if(target === 'one'){
+            offset = 0;
+        }
+        else if(target === 'two'){
+            offset = 1;
+        }
+        else if(target === 'three'){
+            offset = 2;
+        }
+        else{
+            offset = 3;
+        }
+
+        for(let i=0;i<4;i++){
+            currBead[i].classList.remove('addAnimation');
+        }
+
+        setBeadClicked(true);
+
+        console.log(target , offset);
+        const playerInitailPos = [56 , 41 , 20 , 2];
+        setBead( (prev) => {
+            prev[currPlayer*4 + offset] = playerInitailPos[currPlayer];
+            return [...prev];
+        } );
+
     }
 
   return (
